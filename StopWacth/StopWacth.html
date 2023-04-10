@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StopWhacth</title>
+    <style>
+        #main {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #clock {
+            width: 50%;
+            height: 150px;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid grey;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="main">
+        <div id="clock">
+            <span id="hour">00</span>
+            <span id="minute">00</span>
+            <span id="second">00</span>
+        </div>
+
+        <div>
+            <button id="start">Star</button>
+            <button id="stop">Stop</button>
+            <button id="reset">Reset</button>
+        </div>
+    </div>
+    <script>
+        var start = document.getElementById('start')
+        var stop = document.getElementById('stop')
+        var reset = document.getElementById('reset')
+        var second = document.getElementById('second')
+        var minute = document.getElementById('minute')
+        var hour = document.getElementById('hour')
+        var i = 0;
+        var j = 0;
+        var k = 0;
+
+        start.onclick = () => {
+            setInterval(() => {
+                second.innerText = ++i;
+                if (i == 60) {
+                    i = 0;
+                    minute.innerText = ++j;
+                    second.innerText = i;
+                    if (j == 60) {
+                        j = 0;
+                        hour.innerText = ++k;
+                        minute.innerText = j;
+                    }
+                }
+            }, 1000);
+        }
+        stop.onclick = () => {
+
+        }
+    </script>
+</body>
+
+</html>
