@@ -17,6 +17,7 @@
         }
         
         #clock {
+            display: flex;
             width: 50%;
             height: 150px;
             justify-content: center;
@@ -31,7 +32,9 @@
     <div id="main">
         <div id="clock">
             <span id="hour">00</span>
+            <span>:</span>
             <span id="minute">00</span>
+            <span>:</span>
             <span id="second">00</span>
         </div>
 
@@ -48,12 +51,12 @@
         var second = document.getElementById('second')
         var minute = document.getElementById('minute')
         var hour = document.getElementById('hour')
-        var i = 0;
-        var j = 0;
-        var k = 0;
-
+        var i = 0 ;
+        var j= 0 ;
+        var k= 0 ;
+        var timer=null;
         start.onclick = () => {
-            setInterval(() => {
+                timer=setInterval(() => {
                 second.innerText = ++i;
                 if (i == 60) {
                     i = 0;
@@ -65,11 +68,22 @@
                         minute.innerText = j;
                     }
                 }
-            }, 1000);
+                }, 1000);
         }
         stop.onclick = () => {
-
+            if(timer !==null) {
+                clearInterval(timer);
+            }
         }
+        reset.onclick = () =>{
+            i = 0 ;
+            j= 0 ;
+            k= 0 ;
+            document.getElementById('hour').innerHTML = "00";
+            document.getElementById('minute').innerHTML = "00";
+            document.getElementById('second').innerHTML = "00";
+            clearInterval(timer);
+        } 
     </script>
 </body>
 
